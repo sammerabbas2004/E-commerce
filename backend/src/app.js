@@ -6,6 +6,6 @@ app.use(express.json());
 app.use(cookies());
 
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('Hi World!');
 });
 module.exports = app;
