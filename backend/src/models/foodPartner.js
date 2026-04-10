@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const foodPartnerSchema = new mongoose.Schema({
-    name: {
+    Restaurantname: {
+        type: String,
+        required: true
+    },
+    ManagerName: {
         type: String,
         required: true
     },

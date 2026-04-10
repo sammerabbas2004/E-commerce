@@ -1,0 +1,108 @@
+/* ========== CSS Variables for Centralized Theme ========== */
+
+/* Light Mode (Default) */
+:root {
+  /* Primary Colors */
+  --primary-color: #ff6b35;
+  --primary-light: #ff8558;
+  --primary-dark: #e85a2e;
+
+  /* Secondary Colors */
+  --secondary-color: #004e89;
+  --secondary-light: #1a6fa6;
+  --secondary-dark: #003d6b;
+
+  /* Backgrounds */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-tertiary: #f0f2f5;
+
+  /* Text Colors */
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --text-tertiary: #999999;
+
+  /* Borders & Dividers */
+  --border-color: #e0e0e0;
+  --border-light: #f0f0f0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+
+  /* Status Colors */
+  --success-color: #22c55e;
+  --error-color: #ef4444;
+  --warning-color: #f59e0b;
+  --info-color: #3b82f6;
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  /* Typography */
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+  --font-size-2xl: 24px;
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Backgrounds */
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2d2d2d;
+    --bg-tertiary: #3d3d3d;
+
+    /* Text Colors */
+    --text-primary: #f5f5f5;
+    --text-secondary: #b0b0b0;
+    --text-tertiary: #808080;
+
+    /* Borders & Dividers */
+    --border-color: #404040;
+    --border-light: #2a2a2a;
+    --shadow-color: rgba(0, 0, 0, 0.3);
+
+    /* Primary Colors (adjusted for dark mode) */
+    --primary-color: #ff7952;
+    --primary-light: #ff9975;
+    --primary-dark: #e85a2e;
+
+    /* Secondary Colors (adjusted for dark mode) */
+    --secondary-color: #5ba3c8;
+    --secondary-light: #7bb8d4;
+    --secondary-dark: #4a8db5;
+  }
+}
