@@ -2,8 +2,26 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/theme.css'
 import '../styles/auth.css'
-
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 const UserLogin = () => {
+  const navigate = useNavigate()
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    // Collect form data
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+  // Send login request to backend
+  const response = await axios.post("http://localhost:3000/api/auth/user/login", {
+      email,
+      password
+    },{
+      withCredentials: true
+    });
+    console.log(response.data)
+    navigate("/")// Redirect to home page after successful login
+  };
+
   return (
     <div className="auth-container">
       <div className="auth-wrapper">
@@ -15,12 +33,12 @@ const UserLogin = () => {
         </div>
 
         {/* Form */}
-        <form className="auth-form">
+        <form className="auth-form" onSubmit={handleSubmit}>
           {/* Email */}
           <div className="form-group">
-            <label className="form-label">Email Address</label>
+            <label  htmlFor='email' className="form-label">Email Address</label>
             <div className="input-group">
-              <input
+              <input id='email'
                 type="email"
                 className="form-input"
                 placeholder="you@example.com"
@@ -30,9 +48,9 @@ const UserLogin = () => {
 
           {/* Password */}
           <div className="form-group">
-            <label className="form-label">Password</label>
+            <label htmlFor='password' className="form-label">Password</label>
             <div className="input-group">
-              <input
+              <input id='password'
                 type="password"
                 className="form-input"
                 placeholder="Enter your password"

@@ -2,8 +2,31 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/theme.css'
 import '../styles/auth.css'
-
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 const FoodPartnerRegister = () => {
+  const navigate = useNavigate()
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    // Collect form data
+    const restaurantName = e.target.restaurantName.value;
+    const managerName = e.target.managerName.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+  // Send registration request to backend
+  const response = await axios.post("http://localhost:3000/api/auth/foodpartner/register", {
+      Restaurantname: restaurantName,
+      ManagerName: managerName,
+      email,
+      password
+    },{
+      withCredentials: true
+    });
+    console.log(response.data)
+    navigate("/create-food-item")// Redirect to login page after successful registration
+  };
+
+
   return (
     <div className="auth-container">
       <div className="auth-wrapper">
@@ -15,12 +38,15 @@ const FoodPartnerRegister = () => {
         </div>
 
         {/* Form */}
-        <form className="auth-form">
+        <form className="auth-form" onSubmit={handleSubmit}>
           {/* Restaurant Name */}
           <div className="form-group">
-            <label className="form-label">Restaurant Name</label>
+            <label htmlFor="restaurantName" className="form-label">
+              Restaurant Name
+            </label>
             <input
               type="text"
+              id="restaurantName"
               className="form-input"
               placeholder="Your Restaurant"
             />
@@ -28,9 +54,12 @@ const FoodPartnerRegister = () => {
 
           {/* Manager Name */}
           <div className="form-group">
-            <label className="form-label">Manager Name</label>
+            <label htmlFor="managerName" className="form-label">
+              Manager Name
+            </label>
             <input
               type="text"
+              id="managerName"
               className="form-input"
               placeholder="John Doe"
             />
@@ -38,9 +67,12 @@ const FoodPartnerRegister = () => {
 
           {/* Email */}
           <div className="form-group">
-            <label className="form-label">Email Address</label>
+            <label htmlFor="email" className="form-label">
+              Email Address
+            </label>
             <input
               type="email"
+              id="email"
               className="form-input"
               placeholder="manager@restaurant.com"
             />
@@ -48,26 +80,15 @@ const FoodPartnerRegister = () => {
 
           {/* Password */}
           <div className="form-group">
-            <label className="form-label">Password</label>
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
             <input
               type="password"
+              id="password"
               className="form-input"
               placeholder="Create a strong password"
             />
-          </div>
-
-          {/* Terms & Conditions */}
-          <div className="form-group">
-            <div className="checkbox-group">
-              <input
-                type="checkbox"
-                id="terms"
-                className="checkbox-input"
-              />
-              <label htmlFor="terms" className="checkbox-label">
-                I agree to Partner Terms & Conditions
-              </label>
-            </div>
           </div>
 
           {/* Submit Button */}

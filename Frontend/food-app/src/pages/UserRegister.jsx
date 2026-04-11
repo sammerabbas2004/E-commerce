@@ -2,8 +2,27 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/theme.css'
 import '../styles/auth.css'
-
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 const UserRegister = () => {
+  const navigate = useNavigate()
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    // Collect form data
+    const fullName = e.target.fullName.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+  // Send registration request to backend
+  const response = await axios.post("http://localhost:3000/api/auth/user/register", {
+      fullName,
+      email,
+      password
+    },{
+      withCredentials: true
+    });
+    console.log(response.data)
+    navigate("/")
+  };
   return (
     <div className="auth-container">
       <div className="auth-wrapper">
@@ -15,11 +34,11 @@ const UserRegister = () => {
         </div>
 
         {/* Form */}
-        <form className="auth-form">
+        <form className="auth-form" onSubmit={handleSubmit}>
           {/* Full Name */}
           <div className="form-group">
-            <label className="form-label">Full Name</label>
-            <input
+            <label htmlFor='fullName' className="form-label">Full Name</label>
+            <input id="fullName"
               type="text"
               className="form-input"
               placeholder="John Doe"
@@ -28,8 +47,8 @@ const UserRegister = () => {
 
           {/* Email */}
           <div className="form-group">
-            <label className="form-label">Email Address</label>
-            <input
+            <label htmlFor='email' className="form-label">Email Address</label>
+            <input id="email"
               type="email"
               className="form-input"
               placeholder="you@example.com"
@@ -38,40 +57,12 @@ const UserRegister = () => {
 
           {/* Password */}
           <div className="form-group">
-            <label className="form-label">Password</label>
-            <input
+            <label htmlFor='password' className="form-label">Password</label>
+            <input id="password"
               type="password"
               className="form-input"
               placeholder="Create a strong password"
             />
-          </div>
-
-          {/* Terms & Conditions */}
-          <div className="form-group">
-            <div className="checkbox-group">
-              <input
-                type="checkbox"
-                id="terms"
-                className="checkbox-input"
-              />
-              <label htmlFor="terms" className="checkbox-label">
-                I agree to Terms & Conditions
-              </label>
-            </div>
-          </div>
-
-          {/* Marketing */}
-          <div className="form-group">
-            <div className="checkbox-group">
-              <input
-                type="checkbox"
-                id="marketing"
-                className="checkbox-input"
-              />
-              <label htmlFor="marketing" className="checkbox-label">
-                Send me updates about offers
-              </label>
-            </div>
           </div>
 
           {/* Submit Button */}
